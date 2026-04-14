@@ -262,11 +262,13 @@
       font-size: 0.96rem;
       border-radius: 999px;
       padding: 14px 20px;
+      text-decoration: none;
     }
 
     .primary-btn {
       background: var(--accent);
       color: #111;
+      text-decoration: none;
     }
 
     .primary-btn:hover {
@@ -388,6 +390,14 @@
       place-items: center;
       margin: 10px 0 24px;
     }
+
+    .info-legal {
+  margin: 0 0 24px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 0.92rem;
+  max-width: none;
+}
 
     .score-ring {
       width: 180px;
@@ -676,6 +686,120 @@
     justify-self: center;
   }
 }
+
+.info-section {
+  margin-top: 64px;
+}
+
+.info-card {
+  padding: 26px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.info-header {
+  width: 100%;
+  max-width: none;
+  margin-bottom: 24px;
+}
+
+.info-header p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+  width: 100%;
+  max-width: none;
+}
+
+.info-header h2 {
+  margin: 0 0 12px;
+  font-size: 1.6rem;
+  letter-spacing: -0.03em;
+}
+
+
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.criteria-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.criteria-item strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.98rem;
+}
+
+.criteria-item span {
+  display: block;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.info-notes {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.info-note {
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.03);
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
+.talent-pool-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 22px;
+  border-radius: 20px;
+  border: 1px solid rgba(215,255,47,0.18);
+  background: rgba(215,255,47,0.05);
+}
+.brand-link {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.talent-pool-copy strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+
+.talent-pool-copy span {
+  display: block;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.92rem;
+  max-width: 760px;
+}
+
+@media (max-width: 980px) {
+  .criteria-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .talent-pool-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
   </style>
 </head>
 
@@ -683,9 +807,11 @@
   <div class="shell">
     <header class="topbar">
       <div class="brand">
-        <div class="brand-mark">
-          <img src="https://raw.githubusercontent.com/comms-glofy/glofy-assets/refs/heads/main/favicon.png" alt="Glofy" />
-        </div>
+<a href="https://glofy.co" target="_blank" class="brand-link">
+  <div class="brand-mark">
+    <img src="https://raw.githubusercontent.com/comms-glofy/glofy-assets/refs/heads/main/favicon.png" alt="Glofy" />
+  </div>
+</a>
         <div>CV/Resume Check by Glofy</div>
       </div>
 
@@ -838,71 +964,103 @@
     const WEBHOOK_URL = "https://n8n-n8n.d8nhju.easypanel.host/webhook/atscheck";
 
     const translations = {
-      en: {
-        eyebrow: "Resume positioning review",
-        title: "See how your Resume performs in a hiring context",
-        subtitle: "Get a clearer view of how your Resume communicates your profile, how readable it is, and where it may be limiting your positioning.",
-        uploadTitle: "Upload your Resume",
-        uploadText: "Add a PDF file to receive an automated review based on positioning, readability, and market alignment.",
-        resumeLabel: "Resume file",
-        chooseFile: "Choose PDF",
-        noFile: "No file selected",
-        fileLoaded: "Resume loaded:",
-        emailLabel: "Email",
-        consent: "I agree to let Glofy store this information for future opportunities.",
-        analyze: "Analyze Resume",
-        helper: "In this version, PDF is analyzed more deeply.",
-        loadingTitle: "Analyzing your Resume",
-        loadingText: "We’re reviewing how clearly your profile is presented, how readable your Resume is, and how well it aligns with current hiring expectations.",
-        overallScoreLabel: "Overall positioning score",
-        scoreOver100: "out of 100",
-        metricPositioning: "Positioning clarity",
-        metricStructure: "Structure & readability",
-        metricSignal: "Signal strength",
-        summaryTitle: "Quick read",
-        dimensionsTitle: "Performance breakdown",
-        insightsTitle: "Key findings",
-        checklistTitle: "Priority checklist",
-        actionsTitle: "Next step",
-        retry: "Analyze another Resume",
-        note: "This result is indicative. It does not evaluate talent in absolute terms — it evaluates how effectively your Resume represents your profile in a hiring context.",
-        missingInput: "Upload a PDF link to continue.",
-        connectionError: "Connection error. Check browser console.",
-        invalidResponse: "The analysis service returned an invalid response."
-      },
-      es: {
-        eyebrow: "Revisión de posicionamiento del CV",
-        title: "Mirá cómo rinde tu CV en un contexto de selección",
-        subtitle: "Obtené una visión más clara de cómo comunica tu perfil, qué tan legible es y en qué puntos puede estar limitando tu posicionamiento.",
-        uploadTitle: "Subí tu CV",
-        uploadText: "Agregá un archivo PDF para recibir una revisión automática basada en posicionamiento, legibilidad y alineación con el mercado.",
-        resumeLabel: "Archivo de CV",
-        chooseFile: "Elegir PDF",
-        noFile: "Ningún archivo seleccionado",
-        fileLoaded: "CV cargado:",
-        emailLabel: "Email",
-        consent: "Acepto que Glofy almacene esta información para futuras oportunidades.",
-        analyze: "Analizar CV",
-        helper: "En esta versión, el PDF se analiza con mayor profundidad.",
-        loadingTitle: "Analizando tu CV",
-        loadingText: "Estamos revisando qué tan claro está presentado tu perfil, qué tan legible es tu CV y qué tan alineado está con expectativas actuales de selección.",
-        overallScoreLabel: "Puntuación general de posicionamiento",
-        scoreOver100: "sobre 100",
-        metricPositioning: "Claridad de posicionamiento",
-        metricStructure: "Estructura y legibilidad",
-        metricSignal: "Fuerza de señal",
-        summaryTitle: "Lectura rápida",
-        dimensionsTitle: "Desglose de desempeño",
-        insightsTitle: "Hallazgos clave",
-        checklistTitle: "Checklist prioritario",
-        actionsTitle: "Siguiente paso",
-        retry: "Analizar otro CV",
-        note: "Este resultado es orientativo. No evalúa talento de forma absoluta: evalúa qué tan eficazmente tu CV representa tu perfil en un contexto de selección.",
-        missingInput: "Subí un PDF para continuar.",
-        connectionError: "Error de conexión. Revisá la consola del navegador.",
-        invalidResponse: "El servicio de análisis devolvió una respuesta inválida."
-      }
-    };
+  en: {
+    eyebrow: "Resume positioning review",
+    title: "See how your Resume performs in a hiring context",
+    subtitle: "Get a clearer view of how your Resume communicates your profile, how readable it is, and where it may be limiting your positioning.",
+    uploadTitle: "Upload your Resume",
+    uploadText: "Add a PDF file to receive an automated review based on positioning, readability, and market alignment.",
+    resumeLabel: "Resume file",
+    chooseFile: "Choose PDF",
+    noFile: "No file selected",
+    fileLoaded: "Resume loaded:",
+    emailLabel: "Email",
+    consent: "I agree to let Glofy store this information for future opportunities.",
+    analyze: "Analyze Resume",
+    helper: "In this version, PDF is analyzed more deeply.",
+    loadingTitle: "Analyzing your Resume",
+    loadingText: "We’re reviewing how clearly your profile is presented, how readable your Resume is, and how well it aligns with current hiring expectations.",
+    overallScoreLabel: "Overall positioning score",
+    scoreOver100: "out of 100",
+    metricPositioning: "Positioning clarity",
+    metricStructure: "Structure & readability",
+    metricSignal: "Impact",
+    summaryTitle: "Quick read",
+    dimensionsTitle: "Performance breakdown",
+    insightsTitle: "Key findings",
+    checklistTitle: "Priority checklist",
+    actionsTitle: "Next step",
+    retry: "Analyze another Resume",
+    note: "This result is indicative. It does not evaluate talent in absolute terms — it evaluates how effectively your Resume represents your profile in a hiring context.",
+    missingInput: "Upload a PDF to continue.",
+    connectionError: "Connection error. Check browser console.",
+    invalidResponse: "The analysis service returned an invalid response.",
+    infoTitle: "How this review works",
+    infoIntro: "This review is based on how effectively a CV/Resume communicates a professional profile in a hiring context. It does not evaluate talent in absolute terms. It evaluates how clearly the document presents experience, positioning, and relevance for screening.",
+    criteria1Title: "Positioning clarity",
+    criteria1Text: "We evaluate how quickly the role, level, and professional direction can be understood.",
+    criteria2Title: "Structure & readability",
+    criteria2Text: "We review whether the document is easy to scan, well organized, and readable in a first pass.",
+    criteria3Title: "Impact",
+    criteria3Text: "We look at how clearly the CV/Resume communicates contribution, scope, and signs of impact.",
+    criteria4Title: "Market alignment",
+    criteria4Text: "We assess how aligned the document is with current hiring language, naming, and role expectations.",
+    criteria5Title: "ATS readability",
+    criteria5Text: "We consider whether the format supports clear parsing and processing across hiring systems.",
+    infoLegal: "Results are indicative and should be understood as guidance to improve the document, not as a final judgment on a profile. Using this tool does not guarantee participation in a Glofy hiring process and does not imply automatic consideration for open roles.",
+    talentPoolText: "You can leave your information in our Talent Pool so our team can review your profile for future searches.",
+    talentPoolTitle: "Want to be considered for future opportunities?",
+    talentPoolButton: "Join our Talent Pool"
+  },
+  es: {
+    eyebrow: "Revisión de posicionamiento del CV",
+    title: "Mirá cómo rinde tu CV en un contexto de selección",
+    subtitle: "Obtené una visión más clara de cómo comunica tu perfil, qué tan legible es y en qué puntos puede estar limitando tu posicionamiento.",
+    uploadTitle: "Subí tu CV",
+    uploadText: "Agregá un archivo PDF para recibir una revisión automática basada en posicionamiento, legibilidad y alineación con el mercado.",
+    resumeLabel: "Archivo de CV",
+    chooseFile: "Elegir PDF",
+    noFile: "Ningún archivo seleccionado",
+    fileLoaded: "CV cargado:",
+    emailLabel: "Email",
+    consent: "Acepto que Glofy almacene esta información para futuras oportunidades.",
+    analyze: "Analizar CV",
+    helper: "En esta versión, el PDF se analiza con mayor profundidad.",
+    loadingTitle: "Analizando tu CV",
+    loadingText: "Estamos revisando qué tan claro está presentado tu perfil, qué tan legible es tu CV y qué tan alineado está con expectativas actuales de selección.",
+    overallScoreLabel: "Puntuación general de posicionamiento",
+    scoreOver100: "sobre 100",
+    metricPositioning: "Claridad de posicionamiento",
+    metricStructure: "Estructura y legibilidad",
+    metricSignal: "Impacto",
+    summaryTitle: "Lectura rápida",
+    dimensionsTitle: "Desglose de desempeño",
+    insightsTitle: "Hallazgos clave",
+    checklistTitle: "Checklist prioritario",
+    actionsTitle: "Siguiente paso",
+    retry: "Analizar otro CV",
+    note: "Este resultado es orientativo. No evalúa talento de forma absoluta: evalúa qué tan eficazmente tu CV representa tu perfil en un contexto de selección.",
+    missingInput: "Subí un PDF para continuar.",
+    connectionError: "Error de conexión. Revisá la consola del navegador.",
+    invalidResponse: "El servicio de análisis devolvió una respuesta inválida.",
+    infoTitle: "Cómo funciona esta revisión",
+    infoIntro: "Esta revisión se basa en qué tan eficazmente un CV comunica un perfil profesional en un contexto de selección. No evalúa talento de forma absoluta. Evalúa qué tan claro está presentado el recorrido, el posicionamiento y la relevancia del perfil para una primera instancia de screening.",
+    criteria1Title: "Claridad de posicionamiento",
+    criteria1Text: "Evaluamos qué tan rápido se entiende el rol, el seniority y la dirección profesional del perfil.",
+    criteria2Title: "Estructura y legibilidad",
+    criteria2Text: "Revisamos si el documento se puede escanear con facilidad, si está bien organizado y si resulta claro en una primera lectura.",
+    criteria3Title: "Impacto",
+    criteria3Text: "Observamos qué tan claramente el CV comunica contribución, alcance y señales de impacto.",
+    criteria4Title: "Alineación con el mercado",
+    criteria4Text: "Analizamos qué tan alineado está el documento con el lenguaje, el naming y las expectativas actuales de selección.",
+    criteria5Title: "Legibilidad ATS",
+    criteria5Text: "Consideramos si el formato favorece una lectura y un procesamiento claros en sistemas de selección.",
+infoLegal: "Los resultados son orientativos y deben entenderse como una guía para mejorar el documento, no como un juicio definitivo sobre el perfil. El uso de esta herramienta no garantiza formar parte de un proceso de selección en Glofy ni implica consideración automática para búsquedas abiertas.",
+    talentPoolTitle: "¿Querés que tengamos en cuenta tu perfil para futuras oportunidades?",
+    talentPoolText: "Podés dejar tus datos en nuestro Talent Pool para que el equipo revise tu perfil en futuras búsquedas.",
+    talentPoolButton: "Sumarme al Talent Pool"
+  }
+};
 
     const mockResults = {
       overallScore: 84,
@@ -919,14 +1077,14 @@
         en: [
           { label: "Positioning clarity", value: "86/100", note: "Your role and direction are understandable, but the profile could position itself faster and with more precision." },
           { label: "Structure & readability", value: "82/100", note: "The document is generally easy to scan, though some sections still feel denser than they should." },
-          { label: "Signal strength", value: "78/100", note: "The experience is relevant, but some achievements are still described more as responsibilities than as value delivered." },
+          { label: "Impact", value: "78/100", note: "The experience is relevant, but some achievements are still described more as responsibilities than as value delivered." },
           { label: "Market alignment", value: "80/100", note: "The Resume is mostly aligned with current hiring language, but it could better reflect market-standard keywords and naming." },
           { label: "ATS readability", value: "73/100", note: "The Resume is readable for ATS overall, although a few formatting choices may affect parsing consistency." }
         ],
         es: [
           { label: "Claridad de posicionamiento", value: "86/100", note: "Se entiende el rol y la dirección del perfil, pero podría posicionarse más rápido y con mayor precisión." },
           { label: "Estructura y legibilidad", value: "82/100", note: "En general el documento se puede escanear bien, aunque algunas secciones siguen siendo más densas de lo ideal." },
-          { label: "Fuerza de señal", value: "78/100", note: "La experiencia es relevante, pero varios logros todavía aparecen más como tareas que como valor generado." },
+          { label: "Impacto", value: "78/100", note: "La experiencia es relevante, pero varios logros todavía aparecen más como tareas que como valor generado." },
           { label: "Alineación con el mercado", value: "80/100", note: "El CV está bastante alineado con el lenguaje actual de selección, aunque podría reflejar mejor keywords y nombres de rol más estándar." },
           { label: "Legibilidad ATS", value: "73/100", note: "El CV es legible para ATS en términos generales, aunque algunas decisiones de formato pueden afectar la consistencia de lectura." }
         ]
@@ -1248,7 +1406,76 @@ showState("result-state");
     setLanguage("en");
     renderResults(mockResults);
   </script>
-</body>
+<section class="info-section">
+  <div class="card info-card">
+    <div class="info-header">
+      <h2 data-i18n="infoTitle">How this review works</h2>
+      <p data-i18n="infoIntro">
+        This review is based on how effectively a CV/Resume communicates a professional profile in a hiring context. It does not evaluate talent in absolute terms. It evaluates how clearly the document presents experience, positioning, and relevance for screening.
+      </p>
+    </div>
+
+    <div class="criteria-grid">
+      <div class="criteria-item">
+        <strong data-i18n="criteria1Title">Positioning clarity</strong>
+        <span data-i18n="criteria1Text">
+          We evaluate how quickly the role, level, and professional direction can be understood.
+        </span>
+      </div>
+
+      <div class="criteria-item">
+        <strong data-i18n="criteria2Title">Structure & readability</strong>
+        <span data-i18n="criteria2Text">
+          We review whether the document is easy to scan, well organized, and readable in a first pass.
+        </span>
+      </div>
+
+      <div class="criteria-item">
+        <strong data-i18n="criteria3Title">Impact</strong>
+        <span data-i18n="criteria3Text">
+          We look at how clearly the CV/Resume communicates contribution, scope, and signs of impact.
+        </span>
+      </div>
+
+      <div class="criteria-item">
+        <strong data-i18n="criteria4Title">Market alignment</strong>
+        <span data-i18n="criteria4Text">
+          We assess how aligned the document is with current hiring language, naming, and role expectations.
+        </span>
+      </div>
+
+      <div class="criteria-item">
+        <strong data-i18n="criteria5Title">ATS readability</strong>
+        <span data-i18n="criteria5Text">
+          We consider whether the format supports clear parsing and processing across hiring systems.
+        </span>
+      </div>
+    </div>
+
+<p class="info-legal" data-i18n="infoLegal">
+  Results are indicative and should be understood as guidance to improve the document, not as a final judgment on a profile. Using this tool does not guarantee participation in a Glofy hiring process and does not imply automatic consideration for open roles.
+</p>
+
+    <div class="talent-pool-box">
+      <div class="talent-pool-copy">
+        <strong data-i18n="talentPoolTitle">Want to be considered for future opportunities?</strong>
+        <span data-i18n="talentPoolText">
+          You can leave your information in our Talent Pool so our team can review your profile for future searches.
+        </span>
+      </div>
+
+      <a
+        href="https://suevkavdwe9.typeform.com/to/gWJ6hOJW"
+        target="_blank"
+        class="primary-btn"
+        data-i18n="talentPoolButton"
+      >
+        Join our Talent Pool
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="footer-inner">
     
@@ -1283,4 +1510,5 @@ showState("result-state");
 
   </div>
 </footer>
+</body>
 </html>
