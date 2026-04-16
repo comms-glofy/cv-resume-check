@@ -52,7 +52,68 @@
       gap: 20px;
       margin-bottom: 28px;
     }
+.legal-popup {
+  position: fixed;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  justify-content: center;
+  z-index: 9999;
+  pointer-events: none;
+}
 
+.legal-popup.hidden {
+  display: none;
+}
+
+.legal-popup-inner {
+  width: min(680px, 100%);
+  background: rgba(17,19,24,0.96);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  pointer-events: auto;
+}
+
+.legal-popup-inner p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 640px) {
+  .legal-popup {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .legal-popup-inner {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+    .legal-disclaimer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .legal-disclaimer p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.88rem;
+    }
     .brand {
       display: flex;
       align-items: center;
@@ -985,16 +1046,6 @@
     metricPositioning: "Positioning clarity",
     metricStructure: "Structure & readability",
     metricSignal: "Impact",
-    summaryTitle: "Quick read",
-    dimensionsTitle: "Performance breakdown",
-    insightsTitle: "Key findings",
-    checklistTitle: "Priority checklist",
-    actionsTitle: "Next step",
-    retry: "Analyze another Resume",
-    note: "This result is indicative. It does not evaluate talent in absolute terms — it evaluates how effectively your Resume represents your profile in a hiring context.",
-    missingInput: "Upload a PDF to continue.",
-    connectionError: "Connection error. Check browser console.",
-    invalidResponse: "The analysis service returned an invalid response.",
     infoTitle: "How this review works",
     infoIntro: "This review is based on how effectively a CV/Resume communicates a professional profile in a hiring context. It does not evaluate talent in absolute terms. It evaluates how clearly the document presents experience, positioning, and relevance for screening.",
     criteria1Title: "Positioning clarity",
@@ -1007,10 +1058,15 @@
     criteria4Text: "We assess how aligned the document is with current hiring language, naming, and role expectations.",
     criteria5Title: "ATS readability",
     criteria5Text: "We consider whether the format supports clear parsing and processing across hiring systems.",
+    criteria6Title: "Consistency & focus",
+    criteria6Text: "We review whether the document maintains a clear narrative, avoids redundancy, and keeps attention on the most relevant information.",
     infoLegal: "Results are indicative and should be understood as guidance to improve the document, not as a final judgment on a profile. Using this tool does not guarantee participation in a Glofy hiring process and does not imply automatic consideration for open roles.",
-    talentPoolText: "You can leave your information in our Talent Pool so our team can review your profile for future searches.",
+    legalDisclaimer: "By using this tool, you acknowledge that the information submitted may be processed through third-party services involved in the analysis workflow. While we aim for useful and consistent outputs, automated reviews may contain errors, omissions, or inaccurate interpretations and should not be taken as a definitive assessment.",
     talentPoolTitle: "Want to be considered for future opportunities?",
-    talentPoolButton: "Join our Talent Pool"
+    talentPoolText: "You can leave your information in our Talent Pool so our team can review your profile.",
+    talentPoolButton: "Join our Talent Pool",
+    legalShort: "This tool may use third-party services and can produce inaccurate results. Use as guidance only.",
+    legalOk: "OK",
   },
   es: {
     eyebrow: "Revisión de posicionamiento del CV",
@@ -1033,16 +1089,6 @@
     metricPositioning: "Claridad de posicionamiento",
     metricStructure: "Estructura y legibilidad",
     metricSignal: "Impacto",
-    summaryTitle: "Lectura rápida",
-    dimensionsTitle: "Desglose de desempeño",
-    insightsTitle: "Hallazgos clave",
-    checklistTitle: "Checklist prioritario",
-    actionsTitle: "Siguiente paso",
-    retry: "Analizar otro CV",
-    note: "Este resultado es orientativo. No evalúa talento de forma absoluta: evalúa qué tan eficazmente tu CV representa tu perfil en un contexto de selección.",
-    missingInput: "Subí un PDF para continuar.",
-    connectionError: "Error de conexión. Revisá la consola del navegador.",
-    invalidResponse: "El servicio de análisis devolvió una respuesta inválida.",
     infoTitle: "Cómo funciona esta revisión",
     infoIntro: "Esta revisión se basa en qué tan eficazmente un CV comunica un perfil profesional en un contexto de selección. No evalúa talento de forma absoluta. Evalúa qué tan claro está presentado el recorrido, el posicionamiento y la relevancia del perfil para una primera instancia de screening.",
     criteria1Title: "Claridad de posicionamiento",
@@ -1055,10 +1101,15 @@
     criteria4Text: "Analizamos qué tan alineado está el documento con el lenguaje, el naming y las expectativas actuales de selección.",
     criteria5Title: "Legibilidad ATS",
     criteria5Text: "Consideramos si el formato favorece una lectura y un procesamiento claros en sistemas de selección.",
-infoLegal: "Los resultados son orientativos y deben entenderse como una guía para mejorar el documento, no como un juicio definitivo sobre el perfil. El uso de esta herramienta no garantiza formar parte de un proceso de selección en Glofy ni implica consideración automática para búsquedas abiertas.",
+    criteria6Title: "Consistencia y foco",
+    criteria6Text: "Revisamos si el documento sostiene una narrativa clara, evita redundancias y mantiene el foco en la información más relevante.",
+    infoLegal: "Los resultados son orientativos y deben entenderse como una guía para mejorar el documento, no como un juicio definitivo sobre el perfil. El uso de esta herramienta no garantiza formar parte de un proceso de selección en Glofy ni implica consideración automática para búsquedas abiertas.",
+    legalDisclaimer: "Al utilizar esta herramienta, aceptás que la información enviada puede ser procesada a través de servicios de terceros involucrados en el flujo de análisis. Aunque buscamos ofrecer devoluciones útiles y consistentes, las revisiones automáticas pueden contener errores, omisiones o interpretaciones inexactas y no deben tomarse como una evaluación definitiva.",
     talentPoolTitle: "¿Querés que tengamos en cuenta tu perfil para futuras oportunidades?",
-    talentPoolText: "Podés dejar tus datos en nuestro Talent Pool para que el equipo revise tu perfil en futuras búsquedas.",
-    talentPoolButton: "Sumarme al Talent Pool"
+    talentPoolText: "Podés dejar tus datos en nuestro Talent Pool para que el equipo revise tu perfil.",
+    talentPoolButton: "Sumarme al Talent Pool",
+    legalShort: "Esta herramienta puede usar servicios de terceros y puede tener errores. Usar como guía.",
+    legalOk: "OK",
   }
 };
 
@@ -1217,7 +1268,7 @@ infoLegal: "Los resultados son orientativos y deben entenderse como una guía pa
         checklistList.appendChild(row);
       });
     }
-
+   
    function findJsonString(value) {
   if (typeof value === "string") {
     const trimmed = value.trim();
@@ -1405,14 +1456,28 @@ showState("result-state");
 
     setLanguage("en");
     renderResults(mockResults);
+window.addEventListener("DOMContentLoaded", () => {
+  const legalPopup = document.getElementById("legal-popup");
+  const legalOk = document.getElementById("legal-ok");
+
+  if (!legalPopup || !legalOk) return;
+
+  if (localStorage.getItem("legalAccepted") === "true") {
+    legalPopup.classList.add("hidden");
+  }
+
+  legalOk.addEventListener("click", () => {
+    localStorage.setItem("legalAccepted", "true");
+    legalPopup.classList.add("hidden");
+  });
+});
+
   </script>
 <section class="info-section">
   <div class="card info-card">
     <div class="info-header">
       <h2 data-i18n="infoTitle">How this review works</h2>
-      <p data-i18n="infoIntro">
-        This review is based on how effectively a CV/Resume communicates a professional profile in a hiring context. It does not evaluate talent in absolute terms. It evaluates how clearly the document presents experience, positioning, and relevance for screening.
-      </p>
+      <p data-i18n="legalShort"></p>
     </div>
 
     <div class="criteria-grid">
@@ -1450,17 +1515,24 @@ showState("result-state");
           We consider whether the format supports clear parsing and processing across hiring systems.
         </span>
       </div>
+
+      <div class="criteria-item">
+        <strong data-i18n="criteria6Title">Consistency & focus</strong>
+        <span data-i18n="criteria6Text">
+          We review whether the document maintains a clear narrative, avoids redundancy, and keeps attention on the most relevant information.
+        </span>
+      </div>
     </div>
 
-<p class="info-legal" data-i18n="infoLegal">
-  Results are indicative and should be understood as guidance to improve the document, not as a final judgment on a profile. Using this tool does not guarantee participation in a Glofy hiring process and does not imply automatic consideration for open roles.
-</p>
+    <p class="info-legal" data-i18n="infoLegal">
+      Results are indicative and should be understood as guidance to improve the document, not as a final judgment on a profile. Using this tool does not guarantee participation in a Glofy hiring process and does not imply automatic consideration for open roles.
+    </p>
 
     <div class="talent-pool-box">
       <div class="talent-pool-copy">
         <strong data-i18n="talentPoolTitle">Want to be considered for future opportunities?</strong>
         <span data-i18n="talentPoolText">
-          You can leave your information in our Talent Pool so our team can review your profile for future searches.
+          You can leave your information in our Talent Pool so our team can review your profile.
         </span>
       </div>
 
@@ -1475,6 +1547,15 @@ showState("result-state");
     </div>
   </div>
 </section>
+
+<div id="legal-popup" class="legal-popup">
+  <div class="legal-popup-inner">
+    <p data-i18n="legalShort">
+      This tool may use third-party services and can produce inaccurate results. Use as guidance only.
+    </p>
+    <button id="legal-ok" class="primary-btn" data-i18n="legalOk">OK</button>
+  </div>
+</div>
 
 <footer class="footer">
   <div class="footer-inner">
