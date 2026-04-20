@@ -1024,7 +1024,7 @@
   <script>
     const WEBHOOK_URL = "https://n8n-n8n.d8nhju.easypanel.host/webhook/atscheck";
 
-    const translations = {
+const translations = {
   en: {
     eyebrow: "Resume positioning review",
     title: "See how your Resume performs in a hiring context",
@@ -1046,6 +1046,16 @@
     metricPositioning: "Positioning clarity",
     metricStructure: "Structure & readability",
     metricSignal: "Impact",
+    summaryTitle: "Quick read",
+    dimensionsTitle: "Performance breakdown",
+    insightsTitle: "Key findings",
+    checklistTitle: "Priority checklist",
+    actionsTitle: "Next step",
+    retry: "Analyze another Resume",
+    note: "This result is indicative. It does not evaluate talent in absolute terms — it evaluates how effectively your Resume represents your profile in a hiring context.",
+    missingInput: "Upload a PDF to continue.",
+    connectionError: "Connection error. Check browser console.",
+    invalidResponse: "The analysis service returned an invalid response.",
     infoTitle: "How this review works",
     infoIntro: "This review is based on how effectively a CV/Resume communicates a professional profile in a hiring context. It does not evaluate talent in absolute terms. It evaluates how clearly the document presents experience, positioning, and relevance for screening.",
     criteria1Title: "Positioning clarity",
@@ -1066,7 +1076,7 @@
     talentPoolText: "You can leave your information in our Talent Pool so our team can review your profile.",
     talentPoolButton: "Join our Talent Pool",
     legalShort: "This tool may use third-party services and can produce inaccurate results. Use as guidance only.",
-    legalOk: "OK",
+    legalOk: "OK"
   },
   es: {
     eyebrow: "Revisión de posicionamiento del CV",
@@ -1089,6 +1099,16 @@
     metricPositioning: "Claridad de posicionamiento",
     metricStructure: "Estructura y legibilidad",
     metricSignal: "Impacto",
+    summaryTitle: "Lectura rápida",
+    dimensionsTitle: "Desglose de desempeño",
+    insightsTitle: "Hallazgos clave",
+    checklistTitle: "Checklist prioritario",
+    actionsTitle: "Siguiente paso",
+    retry: "Analizar otro CV",
+    note: "Este resultado es orientativo. No evalúa talento de forma absoluta: evalúa qué tan eficazmente tu CV representa tu perfil en un contexto de selección.",
+    missingInput: "Subí un PDF para continuar.",
+    connectionError: "Error de conexión. Revisá la consola del navegador.",
+    invalidResponse: "El servicio de análisis devolvió una respuesta inválida.",
     infoTitle: "Cómo funciona esta revisión",
     infoIntro: "Esta revisión se basa en qué tan eficazmente un CV comunica un perfil profesional en un contexto de selección. No evalúa talento de forma absoluta. Evalúa qué tan claro está presentado el recorrido, el posicionamiento y la relevancia del perfil para una primera instancia de screening.",
     criteria1Title: "Claridad de posicionamiento",
@@ -1109,7 +1129,7 @@
     talentPoolText: "Podés dejar tus datos en nuestro Talent Pool para que el equipo revise tu perfil.",
     talentPoolButton: "Sumarme al Talent Pool",
     legalShort: "Esta herramienta puede usar servicios de terceros y puede tener errores. Usar como guía.",
-    legalOk: "OK",
+    legalOk: "OK"
   }
 };
 
@@ -1196,12 +1216,10 @@
       currentLang = lang;
       document.documentElement.lang = lang;
 
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if (translations[lang][key]) {
-          el.textContent = translations[lang][key];
-        }
-      });
+document.querySelectorAll("[data-i18n]").forEach(el => {
+  const key = el.getAttribute("data-i18n");
+  el.textContent = translations[lang][key] || translations.en[key] || el.textContent;
+});
 
       langButtons.forEach(btn => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
