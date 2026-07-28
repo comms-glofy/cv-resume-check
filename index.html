@@ -1591,13 +1591,15 @@ const translations = {
     // No AI calls: everything below is a static, prewritten question bank.
     // Areas are broad on purpose: the CV/Resume Checker already gave the person
     // personalized feedback, so this step does not need an exact job title.
+    // Questions are intentionally rigorous: each one asks for a specific past
+    // decision, mistake, or trade-off, not a general opinion.
     const interviewGeneralPool = [
-      { type: "intro", en: "Walk me through your background and what brings you to this opportunity.", es: "Contame tu trayectoria y qué te trae a esta oportunidad." },
-      { type: "star", en: "Tell me about a time you faced a difficult challenge at work and how you handled it.", es: "Contame sobre un momento en el que enfrentaste un desafío difícil en el trabajo y cómo lo resolviste." },
-      { type: "intro", en: "Why are you interested in working with international or remote teams?", es: "¿Por qué te interesa trabajar con equipos internacionales o remotos?" },
-      { type: "intro", en: "How do you prioritize your work when you have multiple deadlines?", es: "¿Cómo priorizás tu trabajo cuando tenés varios plazos al mismo tiempo?" },
-      { type: "star", en: "Tell me about a project you're especially proud of and why.", es: "Contame sobre un proyecto del que estés especialmente orgulloso/a y por qué." },
-      { type: "intro", en: "How do you usually communicate progress or blockers to your team or manager?", es: "¿Cómo sueles comunicar avances o bloqueos a tu equipo o líder?" }
+      { type: "star", en: "Tell me about a decision you made that wasn't popular with your team, but that you believed was correct.", es: "Contame sobre una decisión que tomaste que no fue popular en tu equipo, pero que considerabas correcta." },
+      { type: "star", en: "Tell me about a conflict of priorities between your manager and another team, and how you resolved it.", es: "Contame sobre un conflicto de prioridades entre tu líder y otro equipo, y cómo lo resolviste." },
+      { type: "star", en: "Tell me about a time you took on a responsibility that wasn't strictly yours because no one else was addressing it.", es: "Contame sobre una vez que asumiste una responsabilidad que no era estrictamente tuya porque nadie más lo estaba haciendo." },
+      { type: "technical", en: "How do you handle pressure when a deadline is threatened by factors outside your control?", es: "¿Cómo manejás la presión cuando un plazo se ve amenazado por factores fuera de tu control?" },
+      { type: "star", en: "Tell me about a time you had to communicate bad news to someone above you in the organization.", es: "Contame sobre una vez que tuviste que comunicar una mala noticia a alguien por encima tuyo en la organización." },
+      { type: "star", en: "Tell me about a situation where your performance was questioned. How did you respond?", es: "Contame sobre una situación en la que tu desempeño fue cuestionado. ¿Cómo respondiste?" }
     ];
 
     const interviewCategories = [
@@ -1606,11 +1608,11 @@ const translations = {
         en: "Software Development",
         es: "Desarrollo de Software",
         questions: [
-          { type: "technical", en: "How do you approach debugging an issue you can't immediately reproduce?", es: "¿Cómo abordás depurar un problema que no podés reproducir de inmediato?" },
-          { type: "technical", en: "What do you look for when reviewing someone else's code?", es: "¿Qué buscás cuando revisás el código de otra persona?" },
-          { type: "star", en: "Tell me about a time you had to learn a new tool or technology quickly for a project.", es: "Contame sobre una vez que tuviste que aprender rápido una herramienta o tecnología nueva para un proyecto." },
-          { type: "star", en: "Tell me about a technical decision you made that you'd approach differently today.", es: "Contame sobre una decisión técnica que tomaste y que hoy abordarías distinto." },
-          { type: "technical", en: "How do you balance moving fast with keeping your code maintainable?", es: "¿Cómo equilibrás avanzar rápido con mantener el código prolijo y mantenible?" }
+          { type: "star", en: "Tell me about a technical design flaw you identified late in a project. What was the impact and how did you fix it?", es: "Contame sobre un error de diseño técnico que detectaste tarde en un proyecto. ¿Qué impacto tuvo y cómo lo corregiste?" },
+          { type: "technical", en: "If you had to choose between shipping a feature on time with known technical debt, or delaying delivery to address it properly, how do you make that call and who do you involve?", es: "Si tuvieras que elegir entre lanzar una funcionalidad a tiempo con deuda técnica conocida, o retrasar la entrega para resolverla bien, ¿cómo tomás esa decisión y a quién involucrás?" },
+          { type: "star", en: "Tell me about a time a system you built failed in production and you had to take responsibility in front of the team or the client.", es: "Contame sobre una vez que un sistema que construiste falló en producción y tuviste que asumir la responsabilidad frente al equipo o al cliente." },
+          { type: "technical", en: "How do you determine the right technical solution when there is more than one valid way to solve a problem?", es: "¿Cómo evaluás cuál es la solución técnica correcta cuando existe más de un camino válido para resolver el problema?" },
+          { type: "star", en: "Tell me about a technical decision you made that, in hindsight, wasn't the right one. What did you learn?", es: "Contame sobre una decisión técnica que tomaste y que, en retrospectiva, no fue la más acertada. ¿Qué aprendiste?" }
         ]
       },
       {
@@ -1618,11 +1620,11 @@ const translations = {
         en: "Data & AI",
         es: "Datos e IA",
         questions: [
-          { type: "technical", en: "How do you make sure the data you're working with is reliable before drawing conclusions from it?", es: "¿Cómo te asegurás de que los datos con los que trabajás sean confiables antes de sacar conclusiones?" },
-          { type: "technical", en: "How do you explain a technical finding to someone without a data background?", es: "¿Cómo le explicás un hallazgo técnico a alguien sin formación en datos?" },
-          { type: "star", en: "Tell me about a time your analysis or model didn't behave as expected. What did you do?", es: "Contame sobre una vez que tu análisis o modelo no se comportó como esperabas. ¿Qué hiciste?" },
-          { type: "star", en: "Tell me about a project where the data told a different story than what the team expected.", es: "Contame sobre un proyecto en el que los datos mostraron una historia distinta a la que el equipo esperaba." },
-          { type: "technical", en: "How do you decide when a result is good enough to act on versus needing more validation?", es: "¿Cómo decidís cuándo un resultado ya alcanza para actuar y cuándo necesita más validación?" }
+          { type: "star", en: "Tell me about a time your data or model led to a wrong conclusion that affected a business decision. How did you handle it?", es: "Contame sobre una vez que tus datos o tu modelo llevaron a una conclusión equivocada que impactó una decisión de negocio. ¿Cómo lo manejaste?" },
+          { type: "technical", en: "How do you determine whether a result is statistically sound or just noise before communicating it to a stakeholder?", es: "¿Cómo determinás si un resultado es estadísticamente sólido o si es ruido, antes de comunicarlo a un stakeholder?" },
+          { type: "star", en: "Tell me about a situation where you had to tell a leader that their hypothesis wasn't supported by the data.", es: "Contame sobre una situación en la que tuviste que decirle a un líder que su hipótesis no se sostenía con los datos." },
+          { type: "technical", en: "If a model performs well but you can't fully explain why it makes certain decisions, what do you do before putting it into production?", es: "Si un modelo funciona bien pero no podés explicar del todo por qué toma ciertas decisiones, ¿qué hacés antes de ponerlo en producción?" },
+          { type: "star", en: "Tell me about a data project you had to abandon or rebuild from scratch. What led to that decision?", es: "Contame sobre un proyecto de datos que tuviste que abandonar o rehacer por completo. ¿Qué llevó a esa decisión?" }
         ]
       },
       {
@@ -1630,11 +1632,11 @@ const translations = {
         en: "Enterprise Systems",
         es: "Sistemas Empresariales",
         questions: [
-          { type: "technical", en: "How do you gather requirements from a client who isn't very technical?", es: "¿Cómo relevás requerimientos de un cliente que no es muy técnico?" },
-          { type: "technical", en: "How do you decide between customizing a system and using it out of the box?", es: "¿Cómo decidís entre customizar un sistema o usarlo tal como viene?" },
-          { type: "star", en: "Tell me about a customization or integration you implemented and its impact on the business.", es: "Contame sobre una customización o integración que implementaste y su impacto en el negocio." },
-          { type: "star", en: "Tell me about a time a client's request was hard to translate into the system's logic.", es: "Contame sobre una vez que el pedido de un cliente fue difícil de traducir a la lógica del sistema." },
-          { type: "technical", en: "How do you keep track of changes so future upgrades don't break your work?", es: "¿Cómo llevás registro de los cambios para que futuras actualizaciones no rompan tu trabajo?" }
+          { type: "star", en: "Tell me about an implementation that didn't go the way the client expected. How did you handle that conversation?", es: "Contame sobre una implementación que no salió como esperaba el cliente. ¿Cómo manejaste esa conversación?" },
+          { type: "technical", en: "How do you decide whether it's worth customizing a system for a specific requirement, even knowing it could complicate future upgrades?", es: "¿Cómo evaluás si vale la pena customizar un sistema para un requerimiento puntual, aun sabiendo que puede complicar futuras actualizaciones?" },
+          { type: "star", en: "Tell me about a configuration or scope error you identified after the system was already in use.", es: "Contame sobre un error de configuración o de alcance que detectaste después de que el sistema ya estaba en uso." },
+          { type: "technical", en: "If a client asks for something that's technically possible but not a good long-term practice, how do you raise that with them?", es: "Si un cliente pide algo que técnicamente es posible pero no es una buena práctica a largo plazo, ¿cómo se lo planteás?" },
+          { type: "star", en: "Tell me about a project where the scope changed midway through. How did you renegotiate it?", es: "Contame sobre un proyecto donde el alcance cambió a mitad de camino. ¿Cómo lo renegociaste?" }
         ]
       },
       {
@@ -1642,11 +1644,11 @@ const translations = {
         en: "Design & Product",
         es: "Diseño y Producto",
         questions: [
-          { type: "technical", en: "How do you balance user needs with business or technical constraints?", es: "¿Cómo equilibrás las necesidades del usuario con las restricciones del negocio o técnicas?" },
-          { type: "technical", en: "How do you handle feedback that conflicts with your creative direction?", es: "¿Cómo manejás un feedback que va en contra de tu dirección creativa?" },
-          { type: "star", en: "Tell me about a design decision you made that was informed by research or feedback.", es: "Contame sobre una decisión de diseño que tomaste basada en investigación o feedback." },
-          { type: "star", en: "Tell me about a project where you had to design for a brand or audience you didn't know well yet.", es: "Contame sobre un proyecto en el que tuviste que diseñar para una marca o audiencia que todavía no conocías bien." },
-          { type: "technical", en: "How do you keep your design consistent across a whole product or campaign?", es: "¿Cómo hacés para que tu diseño se mantenga consistente en todo un producto o campaña?" }
+          { type: "star", en: "Tell me about a design you launched that didn't perform as expected once it was in real use. What did you do about it?", es: "Contame sobre un diseño que lanzaste y que, con el uso real, no funcionó como esperabas. ¿Qué hiciste al respecto?" },
+          { type: "technical", en: "How do you defend a design decision to a stakeholder who wants something different for a valid business reason?", es: "¿Cómo defendés una decisión de diseño frente a un stakeholder que quiere algo distinto por una razón comercial válida?" },
+          { type: "star", en: "Tell me about a time you had to redo work that was nearly finished because of a change in business direction.", es: "Contame sobre una vez que tuviste que rehacer un trabajo casi terminado por un cambio de dirección del negocio." },
+          { type: "technical", en: "How do you decide when user feedback should change a design and when it shouldn't?", es: "¿Cómo decidís cuándo un feedback de usuario debe cambiar el diseño y cuándo no?" },
+          { type: "star", en: "Tell me about a project where the final result didn't meet your own quality standard. What happened?", es: "Contame sobre un proyecto en el que el resultado final no cumplió con tu propio estándar de calidad. ¿Qué pasó?" }
         ]
       },
       {
@@ -1654,11 +1656,11 @@ const translations = {
         en: "Marketing & Communication",
         es: "Marketing y Comunicación",
         questions: [
-          { type: "technical", en: "How do you decide which channel or piece of content to prioritize with limited time or budget?", es: "¿Cómo decidís qué canal o contenido priorizar cuando el tiempo o el presupuesto son limitados?" },
-          { type: "technical", en: "How do you adapt your tone or message for different platforms or audiences?", es: "¿Cómo adaptás tu tono o mensaje para distintas plataformas o audiencias?" },
-          { type: "star", en: "Tell me about a campaign or piece of content that didn't perform as expected. What did you learn?", es: "Contame sobre una campaña o contenido que no funcionó como esperabas. ¿Qué aprendiste?" },
-          { type: "star", en: "Tell me about something you created that performed better than expected. Why do you think it worked?", es: "Contame sobre algo que creaste y funcionó mejor de lo esperado. ¿Por qué creés que funcionó?" },
-          { type: "technical", en: "How do you measure whether your work is actually working?", es: "¿Cómo medís si tu trabajo realmente está funcionando?" }
+          { type: "star", en: "Tell me about a campaign that didn't deliver the expected results and what you had to explain to the team or client about it.", es: "Contame sobre una campaña que no dio los resultados esperados y qué tuviste que explicarle al equipo o al cliente al respecto." },
+          { type: "technical", en: "How do you decide to cut a strategy that isn't working, even after time and budget have already been invested in it?", es: "¿Cómo decidís cortar una estrategia que no está funcionando, aun cuando ya se invirtió tiempo y presupuesto en ella?" },
+          { type: "star", en: "Tell me about a time a message or piece of communication caused a negative reaction. How did you resolve it?", es: "Contame sobre una vez que un mensaje o pieza de comunicación generó una reacción negativa. ¿Cómo lo resolviste?" },
+          { type: "technical", en: "If a campaign's data contradicts what the client believes is working, how do you communicate that?", es: "Si los datos de una campaña contradicen lo que el cliente cree que está funcionando, ¿cómo se lo comunicás?" },
+          { type: "star", en: "Tell me about a communication decision you made under time pressure that you would reconsider today.", es: "Contame sobre una decisión de comunicación que tomaste bajo presión de tiempo y que hoy reconsiderarías." }
         ]
       },
       {
@@ -1666,11 +1668,11 @@ const translations = {
         en: "Other",
         es: "Otros",
         questions: [
-          { type: "intro", en: "How would you describe your professional experience to someone who doesn't know your field?", es: "¿Cómo describirías tu experiencia profesional a alguien que no conoce tu área?" },
-          { type: "star", en: "Tell me about a time you had to adapt quickly to a change at work.", es: "Contame sobre una vez que tuviste que adaptarte rápido a un cambio en el trabajo." },
-          { type: "intro", en: "What kind of role or environment brings out your best work?", es: "¿En qué tipo de rol o ambiente das lo mejor de vos?" },
-          { type: "star", en: "Tell me about a time you had to collaborate with someone whose working style was very different from yours.", es: "Contame sobre una vez que tuviste que colaborar con alguien con un estilo de trabajo muy distinto al tuyo." },
-          { type: "intro", en: "How do you approach learning something completely new for your job?", es: "¿Cómo abordás aprender algo completamente nuevo para tu trabajo?" }
+          { type: "star", en: "Tell me about a specific mistake you made on an important project. How did you identify it and what did you do afterward?", es: "Contame sobre un error concreto que cometiste en un proyecto importante. ¿Cómo lo identificaste y qué hiciste después?" },
+          { type: "star", en: "Tell me about a difficult decision you had to make without having all the information you would have wanted.", es: "Contame sobre una decisión difícil que tuviste que tomar sin contar con toda la información que hubieras querido." },
+          { type: "technical", en: "How do you handle a situation where your way of working conflicts with that of another team member?", es: "¿Cómo manejás una situación en la que tu forma de trabajar entra en conflicto con la de otra persona del equipo?" },
+          { type: "star", en: "Tell me about a time you had to deliver difficult news or demanding feedback to someone.", es: "Contame sobre una vez que tuviste que dar una noticia difícil o un feedback exigente a alguien." },
+          { type: "star", en: "Tell me about a goal you didn't meet. What factors were within your control and which weren't?", es: "Contame sobre un objetivo que no cumpliste. ¿Qué factores estuvieron bajo tu control y cuáles no?" }
         ]
       }
     ];
@@ -2281,4 +2283,3 @@ window.addEventListener("DOMContentLoaded", () => {
 </footer>
 </body>
 </html>
-
