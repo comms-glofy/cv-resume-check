@@ -1706,6 +1706,7 @@ const translations = {
         section.classList.remove("active");
       });
       document.getElementById(stateId).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "auto" });
     }
 
     function setLanguage(lang) {
